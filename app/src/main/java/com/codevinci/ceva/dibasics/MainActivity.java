@@ -7,8 +7,6 @@ import android.os.Bundle;
 import com.codevinci.ceva.dibasics.di.CarComponent;
 import com.codevinci.ceva.dibasics.di.DaggerCarComponent;
 import com.codevinci.ceva.dibasics.model.Car;
-import com.codevinci.ceva.dibasics.model.Engine;
-import com.codevinci.ceva.dibasics.model.Wheel;
 
 import javax.inject.Inject;
 
@@ -21,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /*Engine engine = new Engine();
-        Wheel wheel = new Wheel();
+        Wheels wheel = new Wheels();
         Car car = new Car(engine,wheel);
         car.drive();*/
 

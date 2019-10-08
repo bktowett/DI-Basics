@@ -5,7 +5,7 @@ import com.codevinci.ceva.dibasics.model.Car;
 
 import dagger.Component;
 
-@Component //add this annotation - dagger will at compile time implement this interface
+@Component(modules = WheelsModule.class) //add this annotation - dagger will at compile time implement this interface
 public interface CarComponent {
 
     Car getCar();//provision method

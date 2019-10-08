@@ -7,12 +7,12 @@ import javax.inject.Inject;
 public class Car {
     private static final String TAG = "Car";
     private Engine engine;
-    private Wheel wheel;
+    private Wheels wheels;
 
     @Inject //constructor injection
-    public Car(Engine engine, Wheel wheel){
+    public Car(Engine engine, Wheels wheels){
         this.engine = engine;
-        this.wheel = wheel;
+        this.wheels = wheels;
     }
 
     public void drive(){
