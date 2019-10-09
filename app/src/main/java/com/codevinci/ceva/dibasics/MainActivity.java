@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.codevinci.ceva.dibasics.di.CarComponent;
 import com.codevinci.ceva.dibasics.di.DaggerCarComponent;
+import com.codevinci.ceva.dibasics.di.DieselEngineModule;
 import com.codevinci.ceva.dibasics.model.Car;
 
 import javax.inject.Inject;
@@ -23,8 +24,12 @@ public class MainActivity extends AppCompatActivity {
         Car car = new Car(engine,wheel);
         car.drive();*/
 
-        CarComponent carComponent = DaggerCarComponent.create();
-        //Car car = carComponent.getCar();
+        /*CarComponent carComponent = DaggerCarComponent.create();
+        //Car car = carComponent.getCar();*/
+        CarComponent carComponent = DaggerCarComponent.builder()
+                .dieselEngineModule(new DieselEngineModule(100))
+                .build();
+
         carComponent.inject(this);
         car.drive();
     }

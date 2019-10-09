@@ -16,7 +16,9 @@ public class Car {
     }
 
     public void drive(){
+        engine.start();
         Log.d(TAG, "driving...");
+
     }
 
     @Inject
