@@ -4,14 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.codevinci.ceva.dibasics.di.CarComponent;
-import com.codevinci.ceva.dibasics.di.DaggerCarComponent;
+import com.codevinci.ceva.dibasics.di.ActivityComponent;
+import com.codevinci.ceva.dibasics.di.DieselEngineModule;
 import com.codevinci.ceva.dibasics.model.Car;
 
 import javax.inject.Inject;
 
+import dagger.android.DaggerActivity;
+
 public class MainActivity extends AppCompatActivity {
-    @Inject Car car;//field injection
+    @Inject Car car1, car2;//field injection
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +25,26 @@ public class MainActivity extends AppCompatActivity {
         Car car = new Car(engine,wheel);
         car.drive();*/
 
-        /*CarComponent carComponent = DaggerCarComponent.create();
-        //Car car = carComponent.getCar();*/
-        /*CarComponent carComponent = DaggerCarComponent.builder()
+        /*ActivityComponent activityComponent = DaggerCarComponent.create();
+        //Car car = activityComponent.getCar();*/
+        /*ActivityComponent activityComponent = DaggerCarComponent.builder()
                 .dieselEngineModule(new DieselEngineModule(100))
                 .build();*/
-        CarComponent carComponent = DaggerCarComponent.builder()
+        /*ActivityComponent activityComponent = DaggerCarComponent.builder()
                 .horsePower(150)
                 .engineCapacity(1000)
-                .build();
+                .build();*/
+        /*ActivityComponent activityComponent = ((ExampleApp)getApplication()).getComponent();*/
+        /*ActivityComponent activityComponent = DaggerActivityComponent.builder()
+                .horsePower(256)
+                .engineCapacity(4000)
+                .appComponent(((ExampleApp)getApplication()).getComponent())
+                .build();*/
+        ActivityComponent activityComponent = ((ExampleApp)getApplication()).getComponent()
+                .getActivityComponent(new DieselEngineModule(120));
 
-        carComponent.inject(this);
-        car.drive();
+        activityComponent.inject(this);
+        car1.drive();
+        car2.drive();
     }
 }
